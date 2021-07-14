@@ -12,8 +12,8 @@ embedding_size = 300
 lstm_hidden_size = 200
 
 
-train_file = 'data/train_dev'
-test_file = 'data/test'
+train_file = '/content/Bi-RNN_inten_slot_plus_attention/data/train_dev'
+test_file = '/content/Bi-RNN_inten_slot_plus_attention/data/test'
 
-vocab_intent_file = 'data/vocab.intent'
-vocab_slot_file = 'data/vocab.slot'
+vocab_intent_file = '/content/Bi-RNN_inten_slot_plus_attention/data/vocab.intentt'
+vocab_slot_file = '/content/Bi-RNN_inten_slot_plus_attention/data/vocab.slot'
