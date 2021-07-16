@@ -25,11 +25,11 @@ class slot_enc(nn.Module):
         x = F.dropout(x, DROPOUT)
         return x 
 
-
 class slot_dec(nn.Module):
     def __init__(self, lstm_hidden_size, label_size=len(slot_dict)):
         super(slot_dec, self).__init__()
         self.lstm = nn.LSTM(input_size=lstm_hidden_size*5, hidden_size=lstm_hidden_size, num_layers=1)
+	self.attention = nn.attention(lstm_hidden_size, lstm_hidden_size)
         self.fc = nn.Linear(lstm_hidden_size, label_size)
         self.hidden_size = lstm_hidden_size
 
@@ -78,6 +78,7 @@ class intent_dec(nn.Module):
     def __init__(self, lstm_hidden_size, label_size=len(intent_dict)):
         super(intent_dec, self).__init__()
         self.lstm = nn.LSTM(input_size=lstm_hidden_size*4, hidden_size=lstm_hidden_size, batch_first=True, num_layers=1)#, dropout=DROPOUT)
+	self.attention = nn.attention(lstm_hidden_size, lstm_hidden_size)
         self.fc = nn.Linear(lstm_hidden_size, label_size)
         
     def forward(self, x, hs, real_len):
